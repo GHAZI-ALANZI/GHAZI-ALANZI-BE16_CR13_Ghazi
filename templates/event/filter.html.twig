@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vienna Events{% endblock %}
+
+{% block body %}
+<div class="card text-bg-dark">
+  <img src="http://3rf8l24fn89f1vqe8a2o4a3f-wpengine.netdna-ssl.com/wp-content/uploads/2019/11/hanny-naibaho-aWXVxy8BSzc-unsplash-1024x683.jpg" class="card-img" alt="..." style="max-width:50vw;">
+  <div class="card-img-overlay">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/ESMD_The_Nutcracker_2010_snowflakes.jpg/1024px-ESMD_The_Nutcracker_2010_snowflakes.jpg" class="card-img " alt="..." style="max-width:50vw;margin-top:-1em;margin-left:50%">
+
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+</div>
+      <div class='container mt-3'>
+
+<div class='row  gap-5 col-lg-12 col-md-10 col-sm-6'>
+      {% for event in event %}
+
+      <div class='card  shadow-lg text-light mb-3' style='width: 15rem;background-color: rgba(0, 0, 0, 0.55);'>
+             <img src='{{event.image}}' class='card-img-top'style='width: 15rem;margin-left:-0.8rem;'>
+             <div class='card-body'>
+                 <h3 class='card-title'>Event:{{event.name}}</h3><hr>
+                 <h6 class='card-title'>When:{{event.date|date("d-m-y")}}</h6><hr>
+
+                 <a href="/details/{{ event.id }}" class='btn btn-warning'>show details</a>
+                 <a href="/delete/{{ event.id }}" class='btn btn-warning'>del</a>
+             </div>
+         </div>
+    
+           
+           {% endfor %}
+     </div>
+    </div>
+         
+
+{% endblock %}

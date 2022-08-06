@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<style>
+
+body{
+
+background: linear-gradient(55deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 7%, rgba(0,0,0,1) 24%, rgba(76,174,251,0.9839286056219363) 24%, rgba(0,0,0,1) 24%, rgba(4,60,45,1) 32%, rgba(22,19,19,1) 39%, rgba(1,55,48,1) 43%, rgba(0,0,0,0.9839286056219363) 57%, rgba(2,66,47,1) 68%, rgba(0,0,0,1) 71%, rgba(29,62,85,1) 78%, rgba(1,69,69,1) 91%, rgba(0,0,0,1) 100%);
+  color: white;
+}
+</style>
+<div class="container">
+{% for message in app.flashes('notice') %}
+   <div class="alert alert-success">
+    {{ message }}
+   </div>
+{% endfor %}
+
+<h2 class="page-header">Add Event</h2>
+   {{form_start(form)}}
+   {{form_widget(form)}}
+       <button class="btn btn-success">{{ button_label|default('Creat new') }}</button>
+
+   {{form_end(form)}}
+
+   </div>
+{% endblock %}
