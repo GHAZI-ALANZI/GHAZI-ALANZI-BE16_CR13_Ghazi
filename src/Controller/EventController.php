@@ -103,13 +103,34 @@ class EventController extends AbstractController
     }
 
    
-    #[Route('/filter', name: 'event_filter')]
+    #[Route('/music', name: 'event_music')]
     public function filter(ManagerRegistry $doctrine): Response
     {
            
 
 $event = $doctrine->getRepository(Event::class)->findBy(['Type' => "music"]);
 
-       return $this->render('event/filter.html.twig', ['event' => $event]);
+       return $this->render('event/music.html.twig', ['event' => $event]);
     }
+
+   
+    #[Route('/dance', name: 'event_dance')]
+    public function filter2(ManagerRegistry $doctrine): Response
+    {
+           
+
+$dance= $doctrine->getRepository(Event::class)->findBy(['Type' => "dance"]);
+
+       return $this->render('event/dance.html.twig', ['event' => $dance]);
+    } 
+    
+    #[Route('/filter/{type}', name: 'event_filter')]
+    public function filter3($type,Request $request, ManagerRegistry $doctrine): Response
+    {
+           
+
+$event= $doctrine->getRepository(Event::class)->findBy(['Type' => $type]);
+
+       return $this->render('event/filter.html.twig', ['event' => $event]);
+    } 
 }
